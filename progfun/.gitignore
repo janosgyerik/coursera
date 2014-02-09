@@ -1,0 +1,10 @@
+# build products
+/*/project/project
+/*/project/target
+/*/target
+
+# eclipse
+/*/.cache
+/.metadata
+bin
+tmp
