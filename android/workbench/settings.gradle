@@ -1,0 +1,3 @@
+include ':app'
+include ':IntentsLab'
+include ':MyBrowser'
