@@ -13,6 +13,8 @@ public class ExplicitlyLoadedActivity extends Activity {
 
 	static private final String TAG = "Lab-Intents";
 
+    public static final String TEXT_KEY = "TEXT";
+
 	private EditText mEditText;
 	
 	@Override
@@ -45,14 +47,16 @@ public class ExplicitlyLoadedActivity extends Activity {
 	private void enterClicked() {
 
 		Log.i(TAG,"Entered enterClicked()");
-		
-		// TODO - Save user provided input from the EditText field
 
-		// TODO - Create a new intent and save the input from the EditText field as an extra
-		
-		// TODO - Set Activity's result with result code RESULT_OK
-		
-		// TODO - Finish the Activity
+        String text = mEditText.getText().toString();
+
+        Intent data = new Intent();
+
+        data.putExtra(TEXT_KEY, text);
+
+        this.setResult(RESULT_OK, data);
+
+        finish();
 
 	}
 }
