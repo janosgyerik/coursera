@@ -30,7 +30,7 @@ mv $projname/src/course $projname/src/main/java
 mv $projname/AndroidManifest.xml $projname/src/main || :
 mv $projname/ic_launcher-web.png $projname/src/main || :
 mv $projname/assets $projname/src/main || :
-mv $projname/res $projname/src/res || :
+mv $projname/res $projname/src/main/res || :
 rm -f $projname/project.properties
 mv $projname/proguard-project.txt $projname/proguard-rules.txt
 
