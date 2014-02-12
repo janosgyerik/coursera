@@ -28,7 +28,8 @@ public class FriendsFragment extends ListFragment {
 		// use different layout definition, depending on whether device is pre-
 		// or post-honeycomb
 
-		int layout = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ? android.R.layout.simple_list_item_activated_1
+		int layout = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
+                ? android.R.layout.simple_list_item_activated_1
 				: android.R.layout.simple_list_item_1;
 
 		// Set the list adapter for this ListFragment

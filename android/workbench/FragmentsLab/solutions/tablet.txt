@@ -1,0 +1,7 @@
+I/Lab-Fragments( 1003): Entered onActivityCreated()
+I/Lab-Fragments( 1003): Entered onItemSelected(0)
+I/Lab-Fragments( 1003): Entered updateFeedDisplay()
+I/Lab-Fragments( 1003): Entered onItemSelected(1)
+I/Lab-Fragments( 1003): Entered updateFeedDisplay()
+I/Lab-Fragments( 1003): Entered onItemSelected(2)
+I/Lab-Fragments( 1003): Entered updateFeedDisplay()
