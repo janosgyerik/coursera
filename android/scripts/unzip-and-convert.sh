@@ -32,6 +32,6 @@ mv $projname/ic_launcher-web.png $projname/src/main || :
 mv $projname/assets $projname/src/main || :
 mv $projname/res $projname/src/main/res || :
 rm -f $projname/project.properties
-mv $projname/proguard-project.txt $projname/proguard-rules.txt
+mv $projname/proguard-project.txt $projname/proguard-rules.txt || :
 
 cleanup
