@@ -4,7 +4,7 @@ zipfile=$1
 
 unzip -l $zipfile
 echo
-echo '[press enter to go ahead and unzip as instructions]'
+echo '[press enter to unzip and convert as app]'
 read
 
 workdir=unzip-$$
@@ -23,8 +23,9 @@ find $workdir -name .project -delete
 
 alias mv='mv -v'
 projname=$(ls $workdir | head -n 1)
-mv -f $workdir/$projname $projname
-cp app/build.gradle $projname
+mv $workdir/$projname $projname
+cp FragmentsLab/build.gradle $projname
+test -d $projname/libs || cp -r FragmentsLab/libs $projname
 mkdir -p $projname/src/main/java
 mv $projname/src/course $projname/src/main/java
 mv $projname/AndroidManifest.xml $projname/src/main || :
