@@ -25,7 +25,6 @@ alias mv='mv -v'
 projname=$(ls $workdir | head -n 1)
 mv $workdir/$projname $projname
 cp FragmentsLab/build.gradle $projname
-test -d $projname/libs || cp -r FragmentsLab/libs $projname
 mkdir -p $projname/src/main/java
 mv $projname/src/course $projname/src/main/java
 mv $projname/AndroidManifest.xml $projname/src/main || :
