@@ -1,0 +1,3 @@
+I/Lab-Permissions( 3268): Entered startBookMarksActivity()
+I/Lab-Permissions( 3268): Entered loadBookmarks()
+I/Lab-Permissions( 3268): Bookmarks loaded
