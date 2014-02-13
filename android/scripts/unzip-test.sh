@@ -26,6 +26,5 @@ testname=$(ls $workdir | head -n 1)
 projname=${testname%Test}
 mkdir -p $projname/src/instrumentTest/java
 mv $workdir/$testname/src/course $projname/src/instrumentTest/java
-cp -rv $workdir/$testname/libs $projname
 
 cleanup
