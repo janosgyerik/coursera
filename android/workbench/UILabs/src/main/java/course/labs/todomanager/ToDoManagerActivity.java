@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ListView;
 import android.widget.TextView;
 import course.labs.todomanager.ToDoItem.Priority;
 import course.labs.todomanager.ToDoItem.Status;
@@ -50,23 +52,27 @@ public class ToDoManagerActivity extends ListActivity {
 		getListView().setFooterDividersEnabled(true);
 
 		//TODO - Inflate footerView for footer_view.xml file
+        View footerView = getLayoutInflater().inflate(R.layout.footer_view, null);
 
-		TextView footerView = null;
+        //TODO - Add footerView to ListView
+        getListView().addFooterView(footerView);
 
-		//TODO - Add footerView to ListView
-
-		footerView.setOnClickListener(new OnClickListener() {
+        assert footerView != null;
+        footerView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
 				log("Entered footerView.OnClickListener.onClick()");
 
 				//TODO - Attach Listener to FooterView. Implement onClick().
+                Intent intent = new Intent(ToDoManagerActivity.this, AddToDoActivity.class);
+                startActivityForResult(intent, ADD_TODO_ITEM_REQUEST);
 
 			}
 		});
 
 		//TODO - Attach the adapter to this ListActivity's ListView
+        setListAdapter(mAdapter);
 
 	}
 
@@ -79,6 +85,14 @@ public class ToDoManagerActivity extends ListActivity {
 		// If user submitted a new ToDoItem
 		// Create a new ToDoItem from the data Intent
 		// and then add it to the adapter
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case ADD_TODO_ITEM_REQUEST:
+                    ToDoItem item = new ToDoItem(data);
+                    mAdapter.add(item);
+                    break;
+            }
+        }
 
 	}
 

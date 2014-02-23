@@ -92,7 +92,8 @@ public class AddToDoActivity extends Activity {
 			public void onClick(View v) {
 				log("Entered cancelButton.OnClickListener.onClick()");
 
-				//TODO - Implement onClick().  
+				//TODO - Implement onClick().
+                finish();
 
 			}
 		});
@@ -106,11 +107,8 @@ public class AddToDoActivity extends Activity {
 				log("Entered resetButton.OnClickListener.onClick()");
 
 				//TODO - Reset data fields to default values
-				
+                setDefaultDateTime();
 
-			
-			
-			
 			}
 		});
 
@@ -127,12 +125,31 @@ public class AddToDoActivity extends Activity {
 				
 				//TODO - Get Priority
 				Priority priority = null;
+                switch (mPriorityRadioGroup.getCheckedRadioButtonId()) {
+                    case R.id.highPriority:
+                        priority = Priority.HIGH;
+                        break;
+                    case R.id.medPriority:
+                        priority = Priority.MED;
+                        break;
+                    case R.id.lowPriority:
+                        priority = Priority.LOW;
+                        break;
+                }
 
 				//TODO -  Get Status
 				Status status = null;
+                switch (mStatusRadioGroup.getCheckedRadioButtonId()) {
+                    case R.id.statusDone:
+                        status = Status.DONE;
+                        break;
+                    case R.id.statusNotDone:
+                        status = Status.NOTDONE;
+                        break;
+                }
 
 				//TODO -  Title
-				String titleString = null;
+				String titleString = mTitleText.getText().toString();
 
 				// Date
 				String fullDate = dateString + " " + timeString;
@@ -142,9 +159,7 @@ public class AddToDoActivity extends Activity {
 				ToDoItem.packageIntent(data, titleString, priority, status, fullDate);
 
 				//TODO - return data Intent and finish
-				
-
-				
+				setResult(RESULT_OK, data);
 				
 			}
 		});
