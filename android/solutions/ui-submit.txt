@@ -1,0 +1,7 @@
+I/Lab-UserInterface( 6422): Entered onActivityResult()
+I/Lab-UserInterface( 6422): Entered onCheckedChanged()
+I/Lab-UserInterface( 6422): Item 0: Title:t3,Priority:HIGH,Status:DONE,Date:2014-03-03 22:21:00
+I/Lab-UserInterface( 6422): Entered footerView.OnClickListener.onClick()
+I/Lab-UserInterface( 6422): Entered submitButton.OnClickListener.onClick()
+I/Lab-UserInterface( 6422): Entered onActivityResult()
+I/Lab-UserInterface( 6422): Item 0: Title:t1,Priority:LOW,Status:DONE,Date:2014-02-28 09:19:00
