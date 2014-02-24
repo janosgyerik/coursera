@@ -160,6 +160,7 @@ public class AddToDoActivity extends Activity {
 
 				//TODO - return data Intent and finish
 				setResult(RESULT_OK, data);
+                finish();
 				
 			}
 		});
