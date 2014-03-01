@@ -1,0 +1,7 @@
+I/Lab-Notifications(12666): In ensureData(), mIsFresh:false
+I/Lab-Notifications(12666): Issuing Toast Message
+I/Lab-Notifications(12666): Entered doInBackground()
+I/Lab-Notifications(12666): Tweet Download Completed:true
+I/Lab-Notifications(12666): Entered notify()
+I/Lab-Notifications(12666): Entered result receiver's onReceive() method
+I/Lab-Notifications(12666): Notification Area Notification sent
