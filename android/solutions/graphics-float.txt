@@ -1,0 +1,2 @@
+I/Lab-Graphics(19857): Creating Bubble at: x:500.0 y:500.0
+I/Lab-Graphics(19857): Bubble removed from view!
