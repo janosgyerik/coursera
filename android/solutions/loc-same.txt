@@ -1,0 +1,6 @@
+I/Lab-Location( 6871): Entered footerView.OnClickListener.onClick()
+I/Lab-Location( 6871): Starting Place Download
+I/Lab-Location( 6871): Entered addNewPlace()
+I/Lab-Location( 6871): Entered footerView.OnClickListener.onClick()
+I/Lab-Location( 6871): You already have this location badge
+I/Lab-Location( 6871): Place: The Greenhouse Country: United States
