@@ -150,8 +150,6 @@ public class MoocDataDBAdapter {
     /**
      * Remove a row of the DB where the rowIndex matches.
      * 
-     * @param rowIndex
-     *            row to remove from DB
      * @return if the row was removed
      */
     public int delete(final String table, long _id) {
@@ -190,8 +188,7 @@ public class MoocDataDBAdapter {
             final String sortOrder) {
 
         // TODO: Perform a query on the database with the given parameters
-        
-        return null;
+        return db.query(table, projection, selection, selectionArgs, null, null, sortOrder);
     }
 
     /**
@@ -230,7 +227,6 @@ public class MoocDataDBAdapter {
     /**
      * Insert a ContentValues into the DB.
      * 
-     * @param location
      * @return row's '_id' of the newly inserted ContentValues
      */
     public long insert(final String table, final ContentValues cv) {
