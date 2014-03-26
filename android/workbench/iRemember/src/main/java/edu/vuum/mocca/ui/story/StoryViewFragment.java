@@ -246,25 +246,24 @@ public class StoryViewFragment extends Fragment {
 			// Set up video playback using the MediaController android widget
 			// and the video view already set up in the layout file.
 			
-			// TODO - Create a new MediaController for this activity 
-		
+			// TODO - Create a new MediaController for this activity
+            MediaController mediaController = new MediaController(getActivity());
 
 			// TODO - The MediaController needs an anchorview. Anchor the Media Controller
 			// to the VideoView, videoLinkView, with the function setAnchorView()
-			
-			
-			
+            mediaController.setAnchorView(videoLinkView);
+
 			// TODO - Now the VideoView, videoLinkView, needs to have a Media Controller set to it
 			// use the setMediaController function from the VideoView to set it to the new Media Controller
-			
-			
+            videoLinkView.setMediaController(mediaController);
+
 			// TODO - Now we need to set the URI for the VideoView, use the setVideoURI function on the
 			//  videoLinkPath string from before.
-			
-			
+            videoLinkView.setVideoURI(Uri.parse(videoLinkPath));
+
 			// TODO - Start the video, using the start function on the VideoView
-			
-			
+            videoLinkView.start();
+
 			// Display the image data
 			
 			imageNameTV.setText(String.valueOf(storyData.imageName).toString());
