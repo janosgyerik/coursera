@@ -1,4 +1,9 @@
-/project
+# build products
 target
+
+# IntelliJ
 .idea
 *.iml
+
+# misc
+tmp
