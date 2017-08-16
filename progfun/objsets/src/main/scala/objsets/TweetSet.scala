@@ -33,15 +33,16 @@ class Tweet(val user: String, val text: String, val retweets: Int) {
   * [1] http://en.wikipedia.org/wiki/Binary_search_tree
   */
 abstract class TweetSet {
+  def isEmpty: Boolean
 
   /**
     * This method takes a predicate and returns a subset of all the elements
     * in the original set for which the predicate is true.
     *
     * Question: Can we implment this method here, or should it remain abstract
-    * and be implemented in the subclasses?
+    * and be implemented in the subclasses? -> here
     */
-  def filter(p: Tweet => Boolean): TweetSet = ???
+  def filter(p: Tweet => Boolean): TweetSet = filterAcc(p, new Empty)
 
   /**
     * This is a helper method for `filter` that propagetes the accumulated tweets.
@@ -54,7 +55,7 @@ abstract class TweetSet {
     * Question: Should we implment this method here, or should it remain abstract
     * and be implemented in the subclasses?
     */
-  def union(that: TweetSet): TweetSet = ???
+  def union(that: TweetSet): TweetSet = that.filterAcc(_ => true, this)
 
   /**
     * Returns the tweet from this set which has the greatest retweet count.
@@ -63,9 +64,10 @@ abstract class TweetSet {
     * type `java.util.NoSuchElementException`.
     *
     * Question: Should we implment this method here, or should it remain abstract
-    * and be implemented in the subclasses?
+    * and be implemented in the subclasses? -> subclass, because the abstract
+    * class should not know about Empty and NonEmpty
     */
-  def mostRetweeted: Tweet = ???
+  def mostRetweeted: Tweet
 
   /**
     * Returns a list containing all tweets of this set, sorted by retweet count
@@ -74,9 +76,16 @@ abstract class TweetSet {
     *
     * Hint: the method `remove` on TweetSet will be very useful.
     * Question: Should we implment this method here, or should it remain abstract
-    * and be implemented in the subclasses?
+    * and be implemented in the subclasses? -> this could be implemented here,
+    * if we had a good way to iterate over the existing items, but we don't really.
     */
-  def descendingByRetweet: TweetList = ???
+  def descendingByRetweet: TweetList = {
+    if (isEmpty) Nil
+    else {
+      val tweet = mostRetweeted
+      new Cons(tweet, remove(tweet).descendingByRetweet)
+    }
+  }
 
   /**
     * The following methods are already implemented
@@ -107,7 +116,10 @@ abstract class TweetSet {
 }
 
 class Empty extends TweetSet {
-  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = ???
+
+  override def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = acc
+
+  override def mostRetweeted: Tweet = throw new NoSuchElementException
 
   /**
     * The following methods are already implemented
@@ -120,12 +132,27 @@ class Empty extends TweetSet {
   def remove(tweet: Tweet): TweetSet = this
 
   def foreach(f: Tweet => Unit): Unit = ()
+
+  override def isEmpty: Boolean = true
 }
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
 
-  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = ???
+  override def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet =
+    left.filterAcc(p, right.filterAcc(p, if (p(elem)) acc.incl(elem) else acc))
 
+  override def mostRetweeted: Tweet = {
+    def max(branch: TweetSet, tweet: Tweet): Tweet = {
+      if (branch.isEmpty) tweet
+      else {
+        val bmost = branch.mostRetweeted
+        if (bmost.retweets > tweet.retweets) bmost
+        else tweet
+      }
+    }
+
+    max(left, max(right, elem))
+  }
 
   /**
     * The following methods are already implemented
@@ -152,6 +179,8 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
     left.foreach(f)
     right.foreach(f)
   }
+
+  override def isEmpty: Boolean = false
 }
 
 trait TweetList {
